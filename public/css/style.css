@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+.grid-container {
+  display: grid;  
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 5px;
+  margin-top: 42px;
+}
+#preview {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-row-gap: 10px;
+}
+@media screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns:  auto auto auto auto;
+  }
+}
+@media screen and (max-width: 900px) {
+  .grid-container {
+    grid-template-columns:  auto auto auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns:  auto auto;
+  }
+}
+
+
+img  {
+  height: 200px;
+}
+#navbar-main {
+  z-index: 10;
+}
+#page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-container a {
+  text-decoration: none;
+  padding: 0 !important;
+}
+
+#gallery-navbar {
+    grid-column: 1 / 6;
+}
+ #img-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card-name {
+  font-family: "Poiret One", serif;
+  font-size: 1.7rem;
+}
+
+.img-card img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.gallery-thumb {
+  position: relative;
+}
+.bg-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+}
+.fg-thumb {
+  position: relative;
+  z-index: 1;
+}
+
+

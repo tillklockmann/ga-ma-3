@@ -34,7 +34,7 @@ class Repo implements ImagePathsInterface
 
 
         foreach ($dirs as $gallery_name) {
-            $dir2 = array_diff(scandir($path . $gallery_name), ['..', '.']);
+            $dir2 = array_diff(scandir($path . $gallery_name), ['..', '.', '.gitignore']);
             foreach ($dir2 as $src) {
                 $all_imgs[] =  $gallery_name . '/' . $src;
             }
@@ -52,7 +52,7 @@ class Repo implements ImagePathsInterface
         $path = self::IMG_DIR;
         $arr = [];
         foreach ($dirs as $gallery_name) {
-            $imgs = array_diff(scandir($path . $gallery_name), ['..', '.']);
+            $imgs = array_diff(scandir($path . $gallery_name), ['..', '.', '.gitignore']);
             $arr[$gallery_name] = $gallery_name . DIRECTORY_SEPARATOR . $imgs[3];
         }
         return $arr;
@@ -62,7 +62,7 @@ class Repo implements ImagePathsInterface
     {
         $path = self::IMG_DIR . $name ;
         
-        $arr = array_diff(scandir($path), ['..', '.']);
+        $arr = array_diff(scandir($path), ['..', '.', '.gitignore']);
         $img_filepath = array_map(function($filename) use ($name){
             return $name . DIRECTORY_SEPARATOR . $filename;
         }, $arr);

@@ -5,7 +5,11 @@ namespace Gallery;
 class GalleryCollection 
 {
     public function getFolderNames($path) 
-    {
-        return array_diff(scandir($path), ['..', '.']);
+    {   
+        if (is_readable($path)) {
+            return array_diff(scandir($path), ['..', '.']);
+        } else {
+            return [];
+        }
     }
 }

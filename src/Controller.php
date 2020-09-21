@@ -24,7 +24,7 @@ class Controller
     public function upload(ParameterBag $request)
     {
        
-        $folder = urldecode(($request['name']));
+        $folder = urldecode($request->get('name'));
         $imgs = $request->files->all()['upload'];
         $uploader = new FileUploader($folder);
         $mssg = $uploader->uploadFiles($imgs);
@@ -76,7 +76,7 @@ class Controller
 
     public function newFolder(ParameterBag $request)
     {
-        $dir = new NewDir($request->request);
+        $dir = new NewDir($request);
         $responseText = $dir->mkdir();
         var_dump($responseText);
     }

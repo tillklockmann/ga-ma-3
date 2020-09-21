@@ -1,9 +1,9 @@
 <?php
 namespace Gallery;
-use Gallery\View;
+use Naona\View;
 use Gallery\Repo;
 use Gallery\FileUploader;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class Controller 
 {
@@ -21,10 +21,10 @@ class Controller
         $this->view = $view;
     }
 
-    public function upload(Request $request, array $var)
+    public function upload(ParameterBag $request)
     {
        
-        $folder = urldecode(($var['name']));
+        $folder = urldecode(($request['name']));
         $imgs = $request->files->all()['upload'];
         $uploader = new FileUploader($folder);
         $mssg = $uploader->uploadFiles($imgs);
@@ -32,7 +32,7 @@ class Controller
     }
 
 
-    public function all($request)
+    public function all(ParameterBag $request)
     {
         $all_imgs = $this->galleryRepo->getAllImgs();
         $names = $this->galleryRepo->getAllFolderNames();
@@ -45,7 +45,7 @@ class Controller
     }
 
     
-    public function home($request) 
+    public function home(ParameterBag $request) 
     {
         $names = $this->galleryRepo->getAllFolderNames();
         $galleries = $this->galleryRepo->getImgForFolder($names);
@@ -60,11 +60,11 @@ class Controller
             ->render();
     }
 
-    public function gallery($request, $vars) 
+    public function gallery(ParameterBag $request) 
     {
-        $name = urldecode($vars['name']);
+        $name = urldecode($request->get('name'));
+        
         $imgs = $this->galleryRepo->getGallery($name);
-
         $this->view
             ->template('gallery')
             ->set('imgs', $imgs)
@@ -74,7 +74,7 @@ class Controller
             ->render();
     }
 
-    public function newFolder(Request $request)
+    public function newFolder(ParameterBag $request)
     {
         $dir = new NewDir($request->request);
         $responseText = $dir->mkdir();

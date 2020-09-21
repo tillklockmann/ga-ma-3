@@ -1,9 +1,9 @@
 <?php
 use FastRoute\DataGenerator\GroupCountBased as DataGeneratorGroupCountBased;
-use Symfony\Component\HttpFoundation\Request;
-use Gallery\Repo;
-use Gallery\View;
 use FastRoute\RouteParser\Std;
+use Symfony\Component\HttpFoundation\Request;
+use Gallery\{Repo, Controller};
+use Naona\View;
 
 
 
@@ -11,6 +11,9 @@ $container['globals'] = function ($c) {
     return Request::createFromGlobals();
 };
 
+$container['Controller'] = function ($c) {
+    return new Controller($c['repo'], $c['view']);
+};
 
 $container['view'] = function ($c) {
     return new View;

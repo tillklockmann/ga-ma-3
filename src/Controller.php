@@ -4,6 +4,7 @@ use Naona\View;
 use Gallery\Repo;
 use Gallery\FileUploader;
 use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\HttpFoundation\Request;
 
 class Controller 
 {
@@ -25,7 +26,7 @@ class Controller
     {
        
         $folder = urldecode($request->get('name'));
-        $imgs = $request->files->all()['upload'];
+        $imgs = Request::createFromGlobals()->files->all()['upload'];
         $uploader = new FileUploader($folder);
         $mssg = $uploader->uploadFiles($imgs);
         var_dump($mssg);

@@ -21,6 +21,8 @@ var NewFolder = {
             console.log(r)
         }).catch(function(error){
             console.log(error)
+        }).then(function(){
+            NewFolder.hideModal()
         })
     },
 

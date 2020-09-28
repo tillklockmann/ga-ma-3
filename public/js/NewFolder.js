@@ -2,7 +2,7 @@ var NewFolder = {
     init: function(wrap) {
         this.$wrap = wrap
         this.$form = $('#js-new-folder-form')
-        this.$form.on('click', this.createFolder)
+        this.$form.on('submit', this.createFolder)
 
         this.$dialog = $('.w3-modal')
         this.$moduleOpener = $('.js-add-folder')

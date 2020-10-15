@@ -10,7 +10,7 @@
                     <img src="assets/thumb/<?= $img ?>" alt="<?= $name ?>" class="bg-thumb w3-grayscale-max">
                     </div>
                     
-                    <div class="w3-container w3-center card-name w3-text-color-white">
+                    <div class="w3-container w3-center card-name">
                         <span><?= $name ?></span>
                     </div>
                 </a>

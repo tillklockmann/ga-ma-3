@@ -55,6 +55,11 @@ img  {
 .card-name {
   font-family: "Poiret One", serif;
   font-size: 1.7rem;
+  position: absolute;
+  bottom: 0;
+  z-index: 6;
+  opacity: .7;
+  background-color: #43cca6;
 }
 
 .img-card img {
